@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="./../../styleMain.css">
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+             <div class="site-logo">
+             	<img src="//everis.inacap.cl/pluginfile.php/1/theme_lambda/logo/1623312001/Mesa%20de%20trabajo%202.png" alt="logo" ALIGN=RIGHT WIDTH=110 HEIGHT=55 >	
+             </div>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/templates/productos/listaProductos.html" th:href="@{/productos}">Home <span class="sr-only">(current)</span></a>
+	      </li>
+	      
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Productos
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="/templates/productos/listaProductos.html" th:href="@{/productos}">Ver Todas</a>
+	          <a class="dropdown-item" href="/templates/productos/registroProductos.html" th:href="@{/productos/form}">Agregar Producto</a>
+	       
+	        </div>
+	      </li>
+	      
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Ventas
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="/templates/ventas/listaVentas.html" th:href="@{/ventas}">Ver Todos</a>
+	          <a class="dropdown-item" href="/templates/ventas/registroVentas.html" th:href="@{/ventas/form}">Nueva Venta</a>
+	       
+	        </div>
+	      </li>
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Categorias
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="/templates/categorias/listaCategorias.html" th:href="@{/categorias}">Ver Todos</a>
+	          <a class="dropdown-item" href="/templates/categorias/registroCategorias.html" th:href="@{/categorias/form}">Nueva Categoria</a>
+	       
+	        </div>
+	      </li>
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Usuarios
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="/templates/usuarios/listaUsuarios.html" th:href="@{/usuarios}">Ver Todos</a>
+	          <a class="dropdown-item" href="/templates/usuarios/registroUsuarios.html" th:href="@{/usuarios/form}">Agregar Usuario</a>
+	          
+	       
+	        </div>
+	      </li>
+	      
+	    </ul>
+	
+	  </div>
+	</nav>
+
+	<br>
+
+	<div class="container-fluid">
+	
+	
+		<div class="row">
+		<div class="col-sm-4">
+			<div class="card">
+			  <div class="card-header">
+				    Opciones
+			  </div>
+				  <div class="card-body">
+				    
+					<ol>
+						<li><a href="/templates/productos/registroProductos.html" th:href="@{/productos/form}">Agregar Producto</a></li>
+						<li><a href="/templates/ventas/registroVentas.html" th:href="@{/ventas/form}">Registrar venta</a></li>
+						<li><a href="/templates/categorias/registroCategorias.html" th:href="@{/categorias/form}">Registrar Categoria</a></li>
+						<li><a href="/templates/usuarios/registroUsuarios.html" th:href="@{/usuarios/form}">Agregar Usuario</a></li>
+					</ol>
+				  </div>
+			 </div>
+		
+			
+			
+		</div>
+		<div class="col-sm-8">
+			<div class="card">
+				  <div class="card-header">
+				    Listado de Usuarios
+				  </div>
+				  <div class="card-body">
+				  <input id="myInput" type="text" placeholder="Search.."><br><br>
+				    <table class="table table-striped">
+						<thead >
+						    <tr>
+						    	<th hidden scope="col">Id</th>
+						        <th scope="col">Nombre</th>
+						        <th scope="col">Apellido</th>
+						        <th scope="col">Tipo de Usuario</th>
+						        <th scope="col">Codigo postal</th>
+						        <th scope="col">Opción</th>
+						    </tr>
+					    </thead>
+					     <tbody id="myTable">
+						    <tr th:each="usuario : ${usuarioLista}">
+						    	<td hidden class="align-middle" th:text="${usuario.id}"></td>
+						        <td class="align-middle" th:text="${usuario.nombre}"></td>
+						        <td class="align-middle" th:text="${usuario.apellido}"></td>
+						        <td class="align-middle" th:text="${usuario.tipo_usuario}"></td>
+						        <td class="align-middle" th:text="${usuario.codigo_postal}"></td>
+						        <td >
+						        	<a  class="btn btn-danger"  type="button" th:href="@{/usuarios/borrar/{id}(id=${usuario.id})}">
+					                    <i>X</i>
+					                </a>
+						        </td>
+						        
+						    </tr>
+					    </tbody>
+					</table>
+				  </div>
+		
+			</div>	
+		</div>
+	</div>
+	<br>
+	<br>
+
+	<!--Footer HTML -->
+	<footer class="bg-light text-center" >
+		<!-- Grid container -->
+		
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			<p ></p>Somos la tienda virtual que trae dulces y chucherias. </p>
+		  © 2021 Copyright:
+		  <!--<a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>-->
+		  <a class="text-white" href="#">tvirtualchucherias.com</a>
+		</div>
+		<!-- Copyright -->
+	  </footer>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
